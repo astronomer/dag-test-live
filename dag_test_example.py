@@ -56,7 +56,7 @@ def dag_test_example():
     sum_orders_plus_shipping(extract_orders()) >> apply_discount
 
 
-dag = dag_test_example()
+dag_object = dag_test_example()
 
 # only run if the module is the main program
 if __name__ == "__main__":
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     variables_path = "variables.yaml"
     my_discount = 0.9
 
-    dag.test(
+    dag_object.test(
         execution_date=datetime(2023, 1, 10),
         conn_file_path=conn_path,
         variable_file_path=variables_path,
