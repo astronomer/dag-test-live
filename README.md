@@ -6,7 +6,14 @@ This repository contains the code shown in the LIVE with Astronomer on 2023-03-0
 
 1. Clone the repository.
 2. Make sure you are in an environment that has Airflow 2.5+ installed by running `airflow version` from your command line.
-3. Make sure you are in an environment that has the [Airflow Amazon provider](https://registry.astronomer.io/providers/amazon) installed. If you have virtualenv installed (`virtualenv --version`) then you can enter the venv provided in this repo by running `source venv/bin/activate`.
+3. Make sure you are in an environment that has the [Airflow Amazon provider](https://registry.astronomer.io/providers/amazon) installed. If you use `virtualenv` you can run the following commands:
+
+```sh
+virtualenv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
 4. Provide your own Amazon connection by creating a `connections.yaml` file based upon `connections_template.yaml`. 
 5. Create an S3 bucket `live-dag-test-bucket` containing one JSON file named `order_values.json` containing the following JSON string: `{'1001': 301.27, '1002': 433.21, '1003': 502.22}`.
 6. Run `python dag_test_example.py`.
