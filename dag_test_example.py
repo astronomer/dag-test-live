@@ -19,7 +19,7 @@ S3_BUCKET_NAME = "live-dag-test-bucket"
 )
 def dag_test_example():
 
-    breakpoint()
+    #breakpoint()
 
     @task
     def extract_orders():
@@ -48,7 +48,7 @@ def dag_test_example():
 
     apply_discount = MyBasicMathOperator(
         task_id="apply_discount",
-        first_number="{{ ti.xcom_pull(task_ids='sum_orders_plus_shipping', key='return_value')}}",
+        first_number="{{ ti.xcom_pull(task_ids='sum_orders_plus_shipping', key='return_value') }}",
         second_number="{{ params.discount }}",
         operation="*",
     )
@@ -62,10 +62,10 @@ dag_object = dag_test_example()
 if __name__ == "__main__":
     conn_path = "connections.yaml"
     variables_path = "variables.yaml"
-    my_discount = 0.9
+    my_discount = 0.60
 
     dag_object.test(
-        execution_date=datetime(2023, 1, 10),
+        execution_date=datetime(2024, 1, 29),
         conn_file_path=conn_path,
         variable_file_path=variables_path,
         run_conf={"discount": my_discount},
